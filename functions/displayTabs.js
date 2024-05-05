@@ -9,7 +9,7 @@ const displayTabs = async (tabsContainer) => {
         if (tabData) {
             ul.innerHTML = tabData.map((tab) => {
                 return `<div class="link">
-                        <div class="add-tab-btn add">
+                        <div class="add-tab-btn ">
                         ➕</div>
                     <li id =${tab.id}>${tab.title}</li>
                         </div>`

@@ -1,4 +1,4 @@
-/* style sheet for page-2 , which is make grp page  */
+/* style sheet for page-2 , which is "make grp page"  */
 
 .grp-info {
   border: 2px solid black;
@@ -48,6 +48,18 @@ li {
   background: none;
   /* border: 2px solid black; */
 }
+.remove-tab-btn {
+  font-size: 1em;
+  cursor: pointer;
+  height: 1px;
+  /* color: red; */
+  position: relative;
+  top: -.8px;
+  margin-left: 10px;
+  background: none;
+  /* border: 2px solid black; */
+}
+
 .create-btn {
   width: 10em;
   height: 2em;
