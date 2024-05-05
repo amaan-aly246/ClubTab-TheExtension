@@ -1,0 +1,21 @@
+{
+  "name": "club-tab",
+  "description": "to club active tabs",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": ["tabs", "activeTab", "storage"],
+  "host_permissions": ["http://*/*", "https://*/*"]
+}

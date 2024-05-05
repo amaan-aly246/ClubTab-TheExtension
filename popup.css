@@ -1,0 +1,51 @@
+.popup-container {
+  width: 300px;
+  height: 200px;
+  overflow-y: auto;
+}
+#page-1 {
+  display: block;
+}
+
+.popup-container::-webkit-scrollbar {
+  width: 0px; 
+}
+.navigation-section {
+  display: flex;
+  cursor: pointer;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.grp-container {
+  /* background-color: paleturquoise ; */
+  min-height: 90px;
+}
+
+.grp-name {
+  /* border: 2px solid red ; */
+  cursor: pointer;
+}
+
+.grp {
+  margin-bottom: 10px;
+  padding-inline: 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  border: 1px solid black;
+}
+.grp-btn {
+  margin-inline: 5px;
+}
+.delete-btn {
+  cursor: pointer;
+  font-size: 15px;
+  color: red;
+}
+
+.edit-btn {
+  cursor: pointer;
+  font-size: 15px;
+  margin-inline: 15px;
+  color: dodgerblue;
+}

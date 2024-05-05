@@ -1,0 +1,63 @@
+/* style sheet for page-2 , which is make grp page  */
+
+.grp-info {
+  border: 2px solid black;
+  display: flex;
+  justify-content: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#title {
+  border: none;
+}
+.grp-title {
+  margin-left: 10px;
+}
+#title:focus {
+  outline: none;
+}
+.tabs-container {
+  border: 2px solid pink;
+  /* padding: -40px; */
+}
+
+li {
+  margin-left: -2em;
+  list-style: none;
+  color: red;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.link {
+  margin-left: -3.8em;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  text-align: center;
+}
+
+.add-tab-btn {
+  font-size: 1em;
+  cursor: pointer;
+  height: 1px;
+  /* color: red; */
+  position: relative;
+  top: -.8px;
+  margin-left: 10px;
+  background: none;
+  /* border: 2px solid black; */
+}
+.create-btn {
+  width: 10em;
+  height: 2em;
+  margin: 1em 5em;
+  border-radius: 2px;
+  background-color: rgb(122, 237, 122);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+#page-2{
+  display: none;
+}
