@@ -15,22 +15,20 @@ const fetchStoredData = async () => {
 // url and tabID of the opened tabs
 const fetchOpenedTabs = async () => {
     try {
+        urlHistoryMap.clear();
         const response = await chrome.tabs.query({});
         const data = await response;
         data.map((item) => {
             if (!Array.from(urlHistoryMap.values()).includes(item.url)) {
                 urlHistoryMap.set(item.id, item.url)
-                console.log({ urlHistoryMap })
             }
-
         })
+        console.log(urlHistoryMap);
+
     } catch (error) {
         console.log(error);
     }
 }
-
-
-
 
 
 fetchStoredData();
