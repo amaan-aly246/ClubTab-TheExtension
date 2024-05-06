@@ -23,7 +23,7 @@ const fetchOpenedTabs = async () => {
                 urlHistoryMap.set(item.id, item.url)
             }
         })
-        console.log(urlHistoryMap);
+        // console.log(urlHistoryMap);
 
     } catch (error) {
         console.log(error);

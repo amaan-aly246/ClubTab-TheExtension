@@ -1,7 +1,7 @@
 
 const displayGroup = async (grpContainer) => {
     try {
-
+     
         const data = (await chrome.storage.local.get('storedGroupsData')).storedGroupsData || {}
         if (Object.keys(data).length != 0) {
             // console.log(Object.keys(data).length)
@@ -11,7 +11,8 @@ const displayGroup = async (grpContainer) => {
                     return ` <div class="grp">
                     <p class="grp-name" id = ${groupName}>${groupName}</p>
                     <p class="grp-btns">
-                        <i class="fa fa-pencil edit-btn" aria-hidden="true"></i>
+                      
+                        <i class="fa-solid fa-eye view-btn" " style="color: #3da1ff;"></i>
                         <i class="fa fa-trash delete-btn" aria-hidden="true"></i>
                     </p>
                 </div>`

@@ -8,7 +8,7 @@
 }
 
 .popup-container::-webkit-scrollbar {
-  width: 0px; 
+  width: 0px;
 }
 .navigation-section {
   display: flex;
@@ -17,12 +17,11 @@
   justify-content: space-around;
 }
 .grp-container {
-  /* background-color: paleturquoise ; */
+  z-index: 1000000;
   min-height: 90px;
 }
 
 .grp-name {
-  /* border: 2px solid red ; */
   cursor: pointer;
 }
 
@@ -43,9 +42,47 @@
   color: red;
 }
 
-.edit-btn {
+.view-btn {
   cursor: pointer;
   font-size: 15px;
   margin-inline: 15px;
   color: dodgerblue;
+}
+
+.view-section {
+  display: none;
+  height: 150px;
+  width: 250px;
+  margin-inline: 15px;
+  margin-top: 20px;
+  box-shadow: 4px 13px 15px -3px rgba(0, 0, 0, 0.1);
+ 
+  overflow-y: scroll;
+}
+.view-section > div {
+  display: flex;
+  position: sticky;
+  top: 0px;
+}
+.view-section > div > p {
+  background-color: white;
+  width: inherit;
+
+  margin-left: 10px;
+  color: rgb(8, 106, 8);
+  margin-top: 0em;
+  margin-bottom: -10px;
+  font-size: 1.5em;
+}
+.view-section > div > i {
+  margin-top: 5px;
+  font-size: 20px;
+  margin-left: 10px;
+  color: purple;
+}
+.view-section::-webkit-scrollbar {
+  width: 0px;
+}
+.cross {
+  cursor: pointer;
 }

@@ -6,8 +6,10 @@ import delEditOpen from "./functions/delEditOpenGrp.js";
 const deleteBtn = document.querySelector('.delete');
 const btnClubTabs = document.querySelector('.btn-Club-tabs');
 const tabsContainer = document.querySelector('.tabs-container');
+
 const page1Btn = document.querySelector('#page-1-btn')
 export const grpContainer = document.querySelector('.grp-container')
+
 
 page1Btn.addEventListener('click', () => {
     const element = document.querySelector('#page-1');
