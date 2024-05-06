@@ -10,14 +10,14 @@ let selectedTabs = new Set();
 listContainer.addEventListener('click', (event) => {
     const element = event.target.nextElementSibling || event.target
     const icon = element.parentElement.firstElementChild
-   
+
     if (icon.classList.contains('add-tab-btn')) {
         icon.textContent = '❌'
         selectedTabs.add(element.id);
         icon.classList.add("remove-tab-btn");
         icon.classList.remove("add-tab-btn");
     }
-    else if(icon.classList.contains('remove-tab-btn'))  {
+    else if (icon.classList.contains('remove-tab-btn')) {
         icon.textContent = '➕'
         selectedTabs.delete(element.id);
         icon.classList.remove("remove-tab-btn");
@@ -41,6 +41,8 @@ page2Btn.addEventListener('click', () => {
 // create group of tabs
 createBtn.addEventListener('click', (event) => {
     const groupName = titleInput.value
+    if (titleInput.value) {
+        createGroup(selectedTabs, groupName);
+    }
 
-    createGroup(selectedTabs, groupName);
 })
