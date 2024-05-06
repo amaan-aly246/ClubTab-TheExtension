@@ -32,20 +32,19 @@ fetchOpenedTabs();
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     if (changeInfo.status == 'complete') {
-        console.log({ urlHistoryMap });
+        // console.log({ urlHistoryMap });
         // url in which the change happened 
         const oldUrl = urlHistoryMap.get(tabId);
         const newUrl = tab.url;
         const newTitle = tab.title;
 
-        console.log({ tabId });
+        // console.log({ tabId });
 
-        console.log({ oldUrl });
+        // console.log({ oldUrl });
         // console.log(storedGroupsData);
         allGroupNames.map((groupName) => {
             storedGroupsData[groupName].forEach((tabProp, index) => {
                 if (oldUrl == tabProp.url) {
-                    console.log({ oldUrl });
                     const tabData = {
                         groupName: `${groupName}`,
                         // title of the new url 
@@ -57,7 +56,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
                     storedGroupsData[groupName][index] = tabData;
                     chrome.storage.local.set({ 'storedGroupsData': storedGroupsData }).then(
                         () => {
-                            console.log({ storedGroupsData })
+                            // console.log({ storedGroupsData })
                         })
                 }
             })
