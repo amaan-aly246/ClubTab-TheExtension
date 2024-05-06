@@ -2,20 +2,6 @@ let allGroupNames = [];
 let storedGroupsData = {}
 const urlHistoryMap = new Map();
 
-// url and tabID of the opened tabs
-const fetchOpenedTabs = async () => {
-    try {
-        const response = await chrome.tabs.query({});
-        const data = await response;
-        data.map((item) => {
-            urlHistoryMap.set(item.id, item.url)
-        })
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-
 const fetchStoredData = async () => {
     try {
         storedGroupsData = (await chrome.storage.local.get('storedGroupsData')).storedGroupsData || {};
@@ -25,13 +11,34 @@ const fetchStoredData = async () => {
     }
 };
 
-fetchStoredData();
-fetchOpenedTabs();
 
+// url and tabID of the opened tabs
+const fetchOpenedTabs = async () => {
+    try {
+        const response = await chrome.tabs.query({});
+        const data = await response;
+        data.map((item) => {
+            if (!Array.from(urlHistoryMap.values()).includes(item.url)) {
+                urlHistoryMap.set(item.id, item.url)
+                console.log({ urlHistoryMap })
+            }
+
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+
+
+fetchStoredData();
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     if (changeInfo.status == 'complete') {
-
+        fetchOpenedTabs();
+        // console.log('changeInfo')
         // url in which the change happened 
         const oldUrl = urlHistoryMap.get(tabId);
         const newUrl = tab.url;
@@ -41,13 +48,13 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
             storedGroupsData[groupName].forEach((tabProp, index) => {
                 if (oldUrl == tabProp.url) {
                     // pause the video  
+                    console.log('oldUrl ')
                     chrome.scripting
                         .executeScript({
                             target: { tabId: tabId },
                             files: ["./ContentScript/ContentScript.js"],
                         })
-                        .then(() => console.log("script injected"));
-
+                        .then(() => console.log("script injected")).catch((error) => console.log(error))
                     const tabData = {
                         groupName: `${groupName}`,
                         // title of the new url 
