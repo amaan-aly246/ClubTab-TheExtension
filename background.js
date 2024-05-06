@@ -9,7 +9,6 @@ const fetchOpenedTabs = async () => {
         const data = await response;
         data.map((item) => {
             urlHistoryMap.set(item.id, item.url)
-
         })
     } catch (error) {
         console.log(error);
@@ -32,19 +31,23 @@ fetchOpenedTabs();
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     if (changeInfo.status == 'complete') {
-        // console.log({ urlHistoryMap });
+
         // url in which the change happened 
         const oldUrl = urlHistoryMap.get(tabId);
         const newUrl = tab.url;
         const newTitle = tab.title;
 
-        // console.log({ tabId });
-
-        // console.log({ oldUrl });
-        // console.log(storedGroupsData);
         allGroupNames.map((groupName) => {
             storedGroupsData[groupName].forEach((tabProp, index) => {
                 if (oldUrl == tabProp.url) {
+                    // pause the video  
+                    chrome.scripting
+                        .executeScript({
+                            target: { tabId: tabId },
+                            files: ["./ContentScript/ContentScript.js"],
+                        })
+                        .then(() => console.log("script injected"));
+
                     const tabData = {
                         groupName: `${groupName}`,
                         // title of the new url 
