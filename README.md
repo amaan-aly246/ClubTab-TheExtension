@@ -10,4 +10,8 @@
 ![Turn ON Developer's mode ](<Screenshot 2024-05-12 030351.png>)
 3. Click on Load unpacked option and add the extension folder .
 ![Load unpacked option](<Screenshot 2024-05-12 030435.png>)
-![Download file](./ClubTab.zip)
+
+## Download ClubTab.zip 
+- Click ClubTab.zip.
+- Click '...' present on right hand side.
+- Click download.
