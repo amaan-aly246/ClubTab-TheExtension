@@ -3,6 +3,9 @@
 ### You think about bookmarking the following tabs to solve the problem of finding them again, but bookmarking is of no use if you keep updating the tab URLs.
 ### To solve this problem, I created ClubTab, an extension that lets you group multiple tabs together. This allows you to open those tabs with just one click, and not only that, it keeps them in sync with any changes.
 
+# Note:
+## For syncing to occur after grouping the tabs into a group, users **must** open the respective tabs again by clicking the respective group name.
+
 # How to install the extension for your browser
 0. Unzip the extension folder
 1. Go to extensions page of the browser.
