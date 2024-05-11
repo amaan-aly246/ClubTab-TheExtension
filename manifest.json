@@ -1,6 +1,6 @@
 {
   "name": "club-tab",
-  "description": "to club active tabs",
+  "description": "to club tabs into a single work and sync the changes made in those tabs",
   "version": "1.0.0",
   "manifest_version": 3,
   "background": {
