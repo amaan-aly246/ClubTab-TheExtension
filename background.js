@@ -1,29 +1,38 @@
-let allGroupNames = [];
-let storedGroupsData = {}
-const urlHistoryMap = new Map();
-
+let flag = 0;
+let storedGroupsData;
+let allGroupNames;
+let urlHistoryMap = new Map();
 const fetchStoredData = async () => {
-    try {
-        storedGroupsData = (await chrome.storage.local.get('storedGroupsData')).storedGroupsData || {};
-        allGroupNames = Object.keys(storedGroupsData);
-    } catch (error) {
-        console.log(error);
-    }
-};
-
+    const data = await chrome.storage.local.get('storedGroupsData');
+    return data.storedGroupsData ?? {};
+}
 
 // url and tabID of the opened tabs
 const fetchOpenedTabs = async () => {
     try {
         urlHistoryMap.clear();
-        const response = await chrome.tabs.query({});
-        const data = await response;
-        data.map((item) => {
-            if (!Array.from(urlHistoryMap.values()).includes(item.url)) {
-                urlHistoryMap.set(item.id, item.url)
+
+        const data = await chrome.tabs.query({});
+       
+        const urls = new Set();
+        for (const item of data) {
+            if (!urls.has(item.url)) {
+
+               // tabs who takes time to load google,send tab obj with additional prop called "pendingUrl" whose value is the url of the website and url prob empty.
+                if (item.pendingUrl) {
+                    urlHistoryMap.set(item.id, item.pendingUrl);
+                    urls.add(item.pendingUrl);
+                }
+                else {
+                    urlHistoryMap.set(item.id, item.url);
+                    urls.add(item.url);
+                }
+
             }
-        })
-        // console.log(urlHistoryMap);
+        }
+        // console.log('fetchOpenedTabs func called')
+       
+        return urlHistoryMap
 
     } catch (error) {
         console.log(error);
@@ -31,48 +40,80 @@ const fetchOpenedTabs = async () => {
 }
 
 
-fetchStoredData();
+const mainFunc = async () => {
 
-chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-    if (changeInfo.status == 'complete') {
-        fetchOpenedTabs();
-        // console.log('changeInfo')
-        // url in which the change happened 
-        const oldUrl = urlHistoryMap.get(tabId);
-        const newUrl = tab.url;
-        const newTitle = tab.title;
 
-        allGroupNames.map((groupName) => {
-            storedGroupsData[groupName].forEach((tabProp, index) => {
-                if (oldUrl == tabProp.url) {
-                    // pause the video  
-                    console.log('oldUrl ')
-                    chrome.scripting
-                        .executeScript({
-                            target: { tabId: tabId },
-                            files: ["./ContentScript/ContentScript.js"],
-                        })
-                        .then(() => console.log("script injected")).catch((error) => console.log(error))
-                    const tabData = {
-                        groupName: `${groupName}`,
-                        // title of the new url 
-                        title: `${newTitle}`,
-                        // new url
-                        url: `${newUrl}`,
-                        muted: false
-                    };
-                    storedGroupsData[groupName][index] = tabData;
-                    chrome.storage.local.set({ 'storedGroupsData': storedGroupsData }).then(
-                        () => {
-                            // console.log({ storedGroupsData })
-                        })
+    try {
+
+        chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+            if (changeInfo.status == 'complete') {
+
+                // populated the values only the first time
+                if (flag == 0) {
+                    const promise = Promise.all([fetchStoredData(), fetchOpenedTabs()]);
+                    [storedGroupsData, urlHistoryMap] = await promise;
+                    allGroupNames = Object.keys(storedGroupsData);
+
+                    console.log('firstTime only ', urlHistoryMap);
+                    flag = 1;
+
                 }
-            })
-        })
-        urlHistoryMap.set(tabId, newUrl);
+
+                const newUrl = tab.url;
+                const newTitle = tab.title;
+
+                const oldUrl = urlHistoryMap.get(tabId);
+                // console.log('tabId', tabId);
+                // console.log('oldUrl', oldUrl);
+                // console.log('newUrl', newUrl);
+
+                allGroupNames.map((groupName) => {
+                    storedGroupsData[groupName].forEach((tabProp, index) => {
+
+                        if (oldUrl == tabProp.url && newUrl != oldUrl) {
+
+                            // console.log('when old Url exist in the database: tabProp.url', tabProp.url)
+
+                            const tabData = {
+                                groupName: `${groupName}`,
+                                // title of the new url 
+                                title: `${newTitle}`,
+                                // new url
+                                url: `${newUrl}`,
+                                muted: false
+                            };
+                            storedGroupsData[groupName][index] = tabData;
+                            chrome.storage.local.set({ 'storedGroupsData': storedGroupsData }).then(
+                                () => {
+                                    // console.log('updated the database: ', storedGroupsData);
+                                })
+                        }
+                    })
+                })
+                // update the change in url to the urlHistoryMap
+                if (urlHistoryMap.get(tabId) && newUrl != oldUrl) {
+                    urlHistoryMap.set(tabId, newUrl);
+                    // console.log(urlHistoryMap);
+                    // console.log("updated one of the url");
+                    // console.log(urlHistoryMap);
+                }
+                // add url of the new tab to the urlHistoryMap.
+                else if (urlHistoryMap.get(tabId) == undefined) {
+                    fetchOpenedTabs();
+                    // console.log("updated the urlHistoryMap")
+                    // console.log(urlHistoryMap)
+
+                }
+            }
+
+            return
+        });
+
+    } catch (error) {
+
     }
-    return
-});
 
+}
 
+mainFunc();
 
