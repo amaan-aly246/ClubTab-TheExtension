@@ -15,4 +15,6 @@
 ![Load unpacked option](<Screenshot 2024-05-12 030435.png>)
 
 ## Download ClubTab.zip 
-- Click on Extension folder and download ClubTab.zip file or simply click [download!](https://github.com/amaan-aly246/ClubTab-TheExtension/blob/main/ClubTab.zip) to go to download page.
+- Click on Extension folder and download ClubTab.zip file or simply click [download!](https://github.com/amaan-aly246/ClubTab-TheExtension/blob/main/Extension/ClubTab.zip) to go to download page.
+- click and "..." on the right site.
+- click download and extension file will start downloading
