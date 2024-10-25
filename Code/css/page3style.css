@@ -1,0 +1,13 @@
+
+/* style sheet for page-3 which is edit page */
+
+#page-3{
+    display: none;
+    width: 300px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+#page-3::-webkit-scrollbar {
+    width: 0px;
+  }

@@ -3,6 +3,8 @@
   <head>
     <!-- css styles for page 2  -->
     <link rel="stylesheet" href="/css/page2style.css" />
+    <!-- css styles for page 3  -->
+    <link rel="stylesheet" href="/css/page3style.css" />
     <link rel="stylesheet" href="popup.css" />
     <!-- font-awesome cdn -->
     <link
@@ -13,9 +15,9 @@
       referrerpolicy="no-referrer" />
   </head>
   <body>
-    <div class="popup-container">
+    <section class="popup-container" id="parentContainer">
       <section class="view-section">
-        <div class="">
+        <div>
           <p></p>
           <i class="fa-solid fa-xmark cross"></i>
         </div>
@@ -27,12 +29,12 @@
         <h2 class="nav-create-group" id="page-2-btn">Create groups</h2>
       </navigation>
 
-      <!-- page-1 starts here -->
+      <!-- page-1 (opened tab page ) starts  here -->
       <div class="grp-container" id="page-1"></div>
 
       <!-- page-1 end here -->
 
-      <!-- page 2 starts here  -->
+      <!-- page 2 ( create group page) starts here  -->
       <section id="page-2">
         <div class="grp-info">
           <p class="grp-title">Group Name</p>
@@ -43,15 +45,30 @@
       </section>
 
       <!-- page-2 ends here  -->
+    </section>
+    <!-- page-3 ( edit grouped tab page ) starts here -->
+    <section id="page-3">
+      <h1>Edit tabs Group</h1>
+      <div class="grp-info">
+        <p class="grp-title">Group Name</p>
+        <input type="text" id="title" value="" placeholder="group name" />
+      </div>
+      <h3>Tabs present in this group </h3>
+      <ul id="selectedTabsList">
+      </ul>
+      <h3>Other tabs that you can add</h3>
+      <ul id="availableTabsList"></ul>
+      <button class="create-btn">Create</button>
+    </section>
+    <!-- page-3 ends here  -->
+    <!-- for testing  purposes  -->
 
-      <!-- for testing  purposes  -->
-
-      <!-- <button class="delete">delete data</button>
+    <!-- <button class="delete">delete data</button>
       <button class="btn-Club-tabs">Retrieve data</button> -->
-    </div>
 
     <!-- script -->
     <script src="popup.js" type="module"></script>
     <script src="js/page2.js" type="module"></script>
+    <script src="js/page3.js" type="module"></script>
   </body>
 </html>

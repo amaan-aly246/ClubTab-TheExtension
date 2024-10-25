@@ -4,9 +4,14 @@ const navigationSection = document.querySelector('.navigation-section');
 const grpContainer = document.querySelector('.grp-container');
 const ul = document.createElement('ul');
 viewSection.appendChild(ul)
-const delEditOpen = async (element, e) => {
+const delEditOpen = async (element) => {
+    // console.log(element)
+    // if(element.classList.contains('edit-btn')){
+    //     console.log(element)
 
-    // ###### delete the group  ######
+    // }
+
+    // // ###### delete the group  ######
     if (element.classList.contains('delete-btn')) {
         const grpName = element.parentElement.previousElementSibling.textContent
 
@@ -18,7 +23,7 @@ const delEditOpen = async (element, e) => {
 
     }
 
-    //######## view-which tabs are included in the group-button ##########
+    //######## view which tabs are included in the group-button ##########
 
     else if (element.classList.contains('view-btn')) {
         const groupName = element.parentElement.previousElementSibling.id

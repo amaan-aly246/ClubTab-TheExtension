@@ -41,7 +41,10 @@
   font-size: 15px;
   color: red;
 }
-
+.edit-btn{
+  cursor: pointer;
+  font-size: 15px;
+}
 .view-btn {
   cursor: pointer;
   font-size: 15px;

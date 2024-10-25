@@ -14,6 +14,7 @@ export const grpContainer = document.querySelector('.grp-container')
 page1Btn.addEventListener('click', () => {
     const element = document.querySelector('#page-1');
     const element2 = document.querySelector('#page-2');
+    const element3 = document.querySelector('#page-3');
     if (element.style.display == 'none') {
         element.style.display = 'block'
         element2.style.display = 'none'
@@ -29,7 +30,7 @@ if (flag == -1) {
 }
 
 grpContainer.addEventListener('click', (e) => {
-    delEditOpen(e.target, e);
+    delEditOpen(e.target);
 })
 
 
