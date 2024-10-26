@@ -5,10 +5,8 @@ const page3 = document.querySelector('#page-3')
 const selectedTabsList = document.querySelector('#selectedTabsList')
 const availableTabsList = document.querySelector('#availableTabsList')
 const homeBtn = document.querySelector('#home-btn')
-
 let grpTabUrl = []
-page3Btn.addEventListener('click', async (e) => {
-    console.log("btn clicked")
+page3Btn?.addEventListener('click', async (e) => {
     // all tabs opened by the user
     const allOpenedTabs = await chrome.tabs.query({});
     const parentContainer = document.querySelector('#parentContainer')
@@ -38,7 +36,6 @@ page3Btn.addEventListener('click', async (e) => {
         `
     }).join(' ')
 
-    // console.log(grpTabUrl)
     if (page3.style.display != 'block') {
         page3.style.display = 'block'
         parentContainer.style.display = 'none'
@@ -47,7 +44,6 @@ page3Btn.addEventListener('click', async (e) => {
 })
 
 homeBtn.addEventListener('click', ()=>{
-    console.log("Hello")
     page3.style.display = 'none'
     parentContainer.style.display = 'block'
 

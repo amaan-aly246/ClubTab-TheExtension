@@ -12,5 +12,4 @@
   },
 
   "permissions": ["tabs", "activeTab", "storage"]
-
 }

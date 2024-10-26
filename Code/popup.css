@@ -2,6 +2,7 @@
   width: 300px;
   height: 200px;
   overflow-y: auto;
+  
 }
 #page-1 {
   display: block;
@@ -88,4 +89,35 @@
 }
 .cross {
   cursor: pointer;
+}
+.delete-alert-container{
+  display: none;
+  background-color: rgb(111, 183, 255);
+  width: 180px;
+  height: 70px;
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  border: 1px solid black;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.delete-alert-container > p{
+  margin-top: 0;
+  padding-left: 4px;
+  margin-bottom: 0px;
+  font-size: 16px;
+}
+
+.delete-alert-btns > button:nth-child(2){
+  background-color: rgb(122, 237, 122);
+}
+.delete-alert-btns > button:nth-child(1){
+  background-color: rgb(226, 17, 34);
+}
+.delete-alert-btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* background-color: dodgerblue; */
 }
