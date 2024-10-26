@@ -15,7 +15,9 @@ page3Btn.addEventListener('click', async (e) => {
     const grpName = e.target.parentElement.parentElement.firstElementChild.id
     const data = (await chrome.storage.local.get('storedGroupsData')).storedGroupsData
     console.log(data)
+    console.log(grpName)
     const grpData = data[grpName]
+    console.log(grpData)
     selectedTabsList.innerHTML = grpData.map((tab) => {
         grpTabUrl.push(tab.url)
         return `<div class="link">

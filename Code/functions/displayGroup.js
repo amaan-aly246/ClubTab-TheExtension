@@ -9,7 +9,7 @@ const displayGroup = async (grpContainer) => {
             if (grpContainer) {
                 grpContainer.innerHTML = groupNameArray.map((groupName) => {
                     return ` <div class="grp">
-                    <p class="grp-name" id = ${groupName}>${groupName}</p>
+                    <p class="grp-name" id ="${groupName}">${groupName}</p>
                     <p class="grp-btns">
                         <i class="fa-regular fa-pen-to-square  edit-btn" id = "page-3-btn" style="color: #2ec11a;"></i>
                         <i class="fa-solid fa-eye view-btn" " style="color: #3da1ff;"></i>
