@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/css/page2style.css" />
     <!-- css styles for page 3  -->
     <link rel="stylesheet" href="/css/page3style.css" />
+    <!-- stylesheet for main page  -->
     <link rel="stylesheet" href="popup.css" />
     <!-- font-awesome cdn -->
     <link
@@ -38,7 +39,7 @@
       <section id="page-2">
         <div class="grp-info">
           <p class="grp-title">Group Name</p>
-          <input type="text" id="title" value="" placeholder="group name" />
+          <input type="text" id="title" placeholder="group name" />
         </div>
         <div class="tabs-container"></div>
         <button class="create-btn">Create</button>
@@ -48,17 +49,21 @@
     </section>
     <!-- page-3 ( edit grouped tab page ) starts here -->
     <section id="page-3">
-      <h1>Edit tabs Group</h1>
+      <nav class="navigation-section">
+        <h1>Edit Group</h1>
+        <h1>
+          <i class="fa-solid fa-house" style="color: #030203" id="home-btn"></i>
+        </h1>
+      </nav>
       <div class="grp-info">
         <p class="grp-title">Group Name</p>
         <input type="text" id="title" value="" placeholder="group name" />
       </div>
-      <h3>Tabs present in this group </h3>
-      <ul id="selectedTabsList">
-      </ul>
+      <h3>Tabs present in this group</h3>
+      <ul id="selectedTabsList"></ul>
       <h3>Other tabs that you can add</h3>
       <ul id="availableTabsList"></ul>
-      <button class="create-btn">Create</button>
+      <button class="create-btn">Save changes</button>
     </section>
     <!-- page-3 ends here  -->
     <!-- for testing  purposes  -->

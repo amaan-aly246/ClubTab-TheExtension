@@ -4,6 +4,7 @@ const page3Btn = document.querySelector('#page-3-btn')
 const page3 = document.querySelector('#page-3')
 const selectedTabsList = document.querySelector('#selectedTabsList')
 const availableTabsList = document.querySelector('#availableTabsList')
+const homeBtn = document.querySelector('#home-btn')
 
 let grpTabUrl = []
 page3Btn.addEventListener('click', async (e) => {
@@ -14,16 +15,13 @@ page3Btn.addEventListener('click', async (e) => {
 
     const grpName = e.target.parentElement.parentElement.firstElementChild.id
     const data = (await chrome.storage.local.get('storedGroupsData')).storedGroupsData
-    console.log(data)
-    console.log(grpName)
     const grpData = data[grpName]
-    console.log(grpData)
     selectedTabsList.innerHTML = grpData.map((tab) => {
         grpTabUrl.push(tab.url)
         return `<div class="link">
                         <span class="add-tab-btn">
                         ❌</span>
-                    <li id =${tab.id}>${tab.title}</li>
+                    <li id ="${tab.id}">${tab.title}</li>
                 </div>`
     }).join(' ')
 
@@ -35,7 +33,7 @@ page3Btn.addEventListener('click', async (e) => {
             <div class="link">
                         <span class="add-tab-btn">
                         ➕</span>
-                    <li id =${tab.id}>${tab.title}</li>
+                    <li id ="${tab.id}">${tab.title}</li>
                 </div>
         `
     }).join(' ')
@@ -45,5 +43,12 @@ page3Btn.addEventListener('click', async (e) => {
         page3.style.display = 'block'
         parentContainer.style.display = 'none'
     }
+
+})
+
+homeBtn.addEventListener('click', ()=>{
+    console.log("Hello")
+    page3.style.display = 'none'
+    parentContainer.style.display = 'block'
 
 })
