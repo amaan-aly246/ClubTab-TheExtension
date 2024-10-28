@@ -115,6 +115,7 @@ export const page3Func = async (e) => {
 
         if (updatedGrpName) {
             selectedTabsInfo.forEach((value, key) => {
+                value.groupName = updatedGrpName
                 updatedGrpData.push(value)
 
             });
@@ -127,7 +128,7 @@ export const page3Func = async (e) => {
             // update grp with changed information 
             await chrome.storage.local.set({ storedGroupsData }, () => {
                 console.log('after', storedGroupsData)
-                window.location.reload();
+                // window.location.reload();
             });
         }
         else {
