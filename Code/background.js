@@ -37,13 +37,11 @@ const mapOpenedTabs = async () => {
       const url = item.pendingUrl || item.url;
       urlHistoryMap.set(item.id, url);
     }
-    return
+
   }
 }
 const mainFunc = async () => {
-  storedGroupsData = await fetchStoredData()
   await mapOpenedTabs()
-  const allGroupNames = Object.keys(storedGroupsData);
 
   chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     if (changeInfo.url) {
@@ -53,6 +51,9 @@ const mainFunc = async () => {
       changedTitle = changeInfo.title
     }
     if (changedUrl && changedTitle) {
+      storedGroupsData = await fetchStoredData()
+      const allGroupNames = Object.keys(storedGroupsData);
+
       changedTitle = ""
       changedUrl = ""
       const newUrl = tab.url;

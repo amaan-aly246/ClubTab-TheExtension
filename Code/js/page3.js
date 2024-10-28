@@ -19,7 +19,6 @@ export const page3Func = async (e) => {
     const grpName = e.target.parentElement.parentElement.firstElementChild.id
     document.querySelector('#grpNameInputBox').value = grpName
     const data = (await chrome.storage.local.get('storedGroupsData')).storedGroupsData
-    console.log('data', data)
     const grpData = data[grpName]
     selectedTabsList.innerHTML = grpData.map((tab) => {
         selectedTabsInfo.set(`${tab.title}`, tab)
