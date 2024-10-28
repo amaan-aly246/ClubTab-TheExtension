@@ -1,10 +1,10 @@
-
+import {page3Func} from "../js/page3.js"
 const displayGroup = async (grpContainer) => {
     try {
      
         const data = (await chrome.storage.local.get('storedGroupsData')).storedGroupsData || {}
         if (Object.keys(data).length != 0) {
-            // console.log(Object.keys(data).length)
+           
             const groupNameArray = Object.keys(data);
             if (grpContainer) {
                 grpContainer.innerHTML = groupNameArray.map((groupName) => {
@@ -19,6 +19,10 @@ const displayGroup = async (grpContainer) => {
                 </div>`
                 }).join('');
             }
+             // Add event listener after setting innerHTML
+            document.querySelector('#page-3-btn').addEventListener('click', (e)=>{
+               page3Func(e)
+            })
 
         }
         else {
