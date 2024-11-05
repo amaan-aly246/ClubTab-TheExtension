@@ -1,4 +1,5 @@
 import createGroup from "../functions/createGroup.js";
+import isValidGroupCreation from "../functions/isValidGroupCreation.js";
 import removeSpace from "../functions/removeSpace.js";
 const page2Btn = document.querySelector('#page-2-btn')
 const createBtn = document.querySelector('.create-btn')
@@ -41,26 +42,8 @@ page2Btn.addEventListener('click', () => {
 
 // Event listener to create a new group of tabs
 createBtn.addEventListener('click', async (event) => {
-    // Retrieve stored groups data from Chrome's local storage
-    const storedGroupsData = (await chrome.storage.local.get('storedGroupsData')).storedGroupsData || {};
-
-    const existingGroupNames = Object.keys(storedGroupsData);
-
-    // Normalize the input title to create a unique, whitespace-free group name key
-    const normalizedGroupName = removeSpace(titleInput.value.toLowerCase());
-
-    if (titleInput.value) {
-        // Check for any existing group with the same normalized name
-        const groupExists = existingGroupNames.some((name) => 
-            normalizedGroupName === removeSpace(name.toLowerCase())
-        );
-
-        if (groupExists) {
-            alert("A group with the same name already exists. Please choose a different name.");
-            return;
-        }
-
-        // Use the original title input (preserving capitalization and spaces) as the group name
+    const isValid = await isValidGroupCreation(selectedTabs, titleInput.value)
+    if (isValid) {
         const finalGroupName = titleInput.value;
         createGroup(selectedTabs, finalGroupName);
     }

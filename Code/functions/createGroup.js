@@ -17,15 +17,11 @@ const createGroup = async (selectedTabs, groupName) => {
         [groupName]: groupData
     };
 
-    try {
-
         storedGroupsData = { ...storedGroupsData, ...newGroup };
 
         await chrome.storage.local.set({ storedGroupsData: storedGroupsData });
         window.location.reload();
-    } catch (err) {
-        console.error(err);
-    }
+
 };
 
 export default createGroup;

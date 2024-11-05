@@ -84,7 +84,6 @@ export const page3Func = async (e) => {
                 // console.log(data)
 
                 selectedTabsInfo.set(element.textContent, data)
-                console.log('tab added', selectedTabsInfo)
 
             }
             else if (btn.classList.contains('remove-tab-btn')) {
@@ -92,7 +91,6 @@ export const page3Func = async (e) => {
                 btn.classList.remove("remove-tab-btn");
                 btn.classList.add("add-tab-btn");
                 selectedTabsInfo.delete(element.textContent)
-                console.log('tab removed', selectedTabsInfo)
             }
         });
     });
@@ -112,7 +110,6 @@ export const page3Func = async (e) => {
     saveChangesBtn.addEventListener('click', async () => {
         const updatedGrpName = document.querySelector('#grpNameInputBox').value
         const updatedGrpData = []
-
         if (updatedGrpName) {
             selectedTabsInfo.forEach((value, key) => {
                 value.groupName = updatedGrpName
@@ -127,7 +124,6 @@ export const page3Func = async (e) => {
             storedGroupsData[updatedGrpName] = updatedGrpData;
             // update grp with changed information 
             await chrome.storage.local.set({ storedGroupsData }, () => {
-                console.log('after', storedGroupsData)
                 window.location.reload();
             });
         }
