@@ -4,14 +4,9 @@ const createGroup = async (selectedTabs, groupName) => {
     const groupData = [];
     let storedGroupsData;
 
-    try {
         storedGroupsData = (await chrome.storage.local.get('storedGroupsData')).storedGroupsData || {};
 
-        // console.log(storedGroupsData);
 
-    } catch (err) {
-        console.error(err);
-    }
 
     for (const tabId of selectedTabs) {
         const tabInfo = await getTabData(tabId, groupName);

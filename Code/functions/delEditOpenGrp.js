@@ -36,9 +36,6 @@ const delEditOpen = async (element) => {
             displayGroup();
         })
 
-
-
-
     }
 
     //######## view which tabs are included in the group-button ##########
