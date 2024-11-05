@@ -11,5 +11,5 @@
     "default_popup": "popup.html"
   },
 
-  "permissions": ["tabs", "activeTab", "storage"]
+  "permissions": ["tabs", "storage"]
 }
