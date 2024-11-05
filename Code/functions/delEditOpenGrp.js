@@ -12,7 +12,7 @@ viewSection.appendChild(ul)
 
 const delEditOpen = async (element) => {
 
-    // // ###### delete the group  ######
+     // ###### delete the group  ######
     if (element.classList.contains('delete-btn')) {
         // open the delete group alert box
         deleteAlertContainer.style.display = 'block'
@@ -45,10 +45,9 @@ const delEditOpen = async (element) => {
         const groupData = (await chrome.storage.local.get('storedGroupsData')).storedGroupsData[groupName]
         const p = viewSection.firstElementChild.firstElementChild
         p.innerHTML = `Tab(s) included in <span style="color: purple">"${groupName}"</span> group`
-        // console.log(p);
         ul.innerHTML = groupData.map((tab) => {
             return `
-                
+
             <li id =${tab.id}>--${tab.title}</li>
                 `
         }).join('')
@@ -84,12 +83,9 @@ const delEditOpen = async (element) => {
     //######## open Tabs by clicking group section  ##########
 
     else if (element.classList.contains('grp')) {
-
-
         const groupName = element.firstElementChild.textContent
         const data = await chrome.storage.local.get()
         data.storedGroupsData[groupName].forEach((tabProp) => {
-            // console.log({tabProp});
             chrome.tabs.create({ url: `${tabProp.url}` })
         })
 
