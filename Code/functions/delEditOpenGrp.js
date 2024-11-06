@@ -79,17 +79,6 @@ const delEditOpen = async (element) => {
         })
 
     }
-
-    //######## open Tabs by clicking group section  ##########
-
-    else if (element.classList.contains('grp')) {
-        const groupName = element.firstElementChild.textContent
-        const data = await chrome.storage.local.get()
-        data.storedGroupsData[groupName].forEach((tabProp) => {
-            chrome.tabs.create({ url: `${tabProp.url}` })
-        })
-
-    }
 }
 
 

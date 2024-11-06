@@ -24,6 +24,7 @@
 
 .grp-name {
   cursor: pointer;
+  padding-right: 170px;
 }
 
 .grp {
@@ -33,6 +34,8 @@
   justify-content: space-between;
   flex-direction: row;
   border: 1px solid black;
+  /* background-color: red; */
+
 }
 .grp-btn {
   margin-inline: 5px;
