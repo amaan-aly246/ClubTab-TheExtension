@@ -18,7 +18,7 @@ That's why I created TabKeeper, a browser extension that lets you group multiple
 3. Click on Load unpacked option and add the extension folder .
 ![Load unpacked option](<Screenshot 2024-05-12 030435.png>)
 
-## Download ClubTab.zip 
+## Download TabKeeper.zip 
 - Click on Extension folder and download TapKeeper.zip file or simply click [download!](https://github.com/amaan-aly246/ClubTab-TheExtension/blob/main/Extension%20Download%20File/TabKeeper.zip) to go to download page.
 - click and "..." on the right site.
 - click download and extension file will start downloading
