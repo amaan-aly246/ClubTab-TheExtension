@@ -1,10 +1,14 @@
-# What this extension does
- You open 2-3 tabs for your academic/non-academic work. When you are done with the work for that day, you close your browser. The next day, you open the same tabs and repeat the same process.
- You think about bookmarking the following tabs to solve the problem of finding them again, but bookmarking is of no use if you keep updating the tab URLs.
- To solve this problem, I created ClubTab, an extension that lets you group multiple tabs together. This allows you to open those tabs with just one click, and not only that, it keeps them in sync with any changes.
+# Introducing TabKeeper: Simplify Your Workflow
 
-# Note:
-## For syncing to occur after grouping the tabs into a group, users **must** open the tabs again by clicking the respective group name.
+Are you tired of the daily grind of opening and closing the same tabs for your work or studies? You know the routine: open 2-3 tabs, work on them, close the browser, and repeat the process the next day. But what happens when you need to revisit those tabs? Bookmarking might seem like a solution, but it falls short when you're constantly updating tab URLs.
+
+# Break the Cycle with TabKeeper
+
+That's why I created TabKeeper, a browser extension that lets you group multiple tabs together and keep them in sync. With TabKeeper, you can:
+
+- Open your favorite tabs with just one click
+- Automatically update tab URLs, so you always have the latest information
+- Simplify your workflow and reduce distractions
 
 # How to install the extension for your browser
 0. Unzip the extension folder
