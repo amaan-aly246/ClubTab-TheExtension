@@ -1,7 +1,7 @@
 {
   "name": "TapKeeper",
   "description": "A game-changing browser extension that simplifies workflow by grouping multiple tabs together and keeping them in sync. It allows users to open favorite tabs with one click, automatically update tab URLs, and reduce distractions. Perfect for students, professionals, and anyone seeking to boost productivity.",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js",
